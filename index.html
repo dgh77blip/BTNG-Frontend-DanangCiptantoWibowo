@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111714">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>OtoDrive - Drive Your Dream: Mobil Bergaransi, Tanpa Khawatir</title>
+</head>
+<body>
+    <!-- BAR MENU PALING ATAS (HEADER) / HOME -->
+    <div class="pengumuman"><span class="pengumuman-dot"></span>Beri kenyamanan terbaik untuk keluargamu di setiap perjalanan <span class="pengumuman-right">Temukan mobil idealmu di sini sekarang!</span></div>
+    <header class="site-header">
+        <a class="brand" href="#" aria-label="OtoDrive beranda">
+            <span class="brand-mark">OD</span>
+            <span>OtoDrive<span class="brand-period">.</span>
+            <small>Drive Your Dream</small></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navigasi utama">
+            <a href="#koleksi">Koleksi</a>
+            <a href="#tentang">Tentang Kami</a>
+            <a href="#layanan">Layanan</a>
+        </nav>
+        <a class="cta-header" href="#koleksi">Jelajah Mobil Kami<span>↗</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka navigasi" aria-expanded="false">☰</button>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-2">
+                <div class="eyebrow"><span></span> terbaik menuju cerita barumu</div>
+                <h1>Kepuasan kamu dimulai dari<br>unit yang tepat<em> Disini</em></h1>
+                <p>Setiap perjalanan hebat dimulai dari pilihan yang tepat. Temukan unit terbaikmu di sini dan mulailah rute barumu.</p>
+                <div class="hero-actions">
+                    <a class="button button-dark" href="#koleksi">Koleksi Mobil</a>
+                    <a class="text-link" href="#tentang">Kenali OtoDrive</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image"></div>
+                <div class="hero-image-label">
+                    <span>01 / COVER</span>
+                    <strong>Premium quality<br>Perfect for you</strong>
+                </div>
+                <div class="hero-bottom-note">
+                    <span>YOUR PREMIUM CHOICE</span>
+                    <span>↗</span>
+                </div>
+            </div>   
+        </section>
+        <section class="stats-strip" aria-label="Keunggulan OtoDrive">
+            <div>
+                <strong>01</strong>
+                <span>Jelajah tanpa batas</span>
+            </div>
+            <div>
+                <strong>02</strong>
+                <span>Kemewahan Tanpa Batas</span>
+            </div>
+            <div>
+                <strong>03</strong>
+                <span>Kenyamanan Berkelas Tinggi</span>
+            </div>
+            <div class="stats-note">Real Quality<br>Honest Stories</div>
+        </section>
+        <!-- Bagian 2 Sistem Koleksi Data mobil mobil yang dilihat (MID) KOLEKSI MOBIL -->
+         <section class="collection section-wrap" id="koleksi">
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow"><span></span>Koleksi Mobil Kami</div>
+                    <h2>Temukan Mobil <em>Impian Mu</em></h2>
+                </div>
+                <p>Dari agenda harian hingga destinasi impian, temukan partner berkendara yang pas. Unit berkualifikasi tinggi dengan trek rekor jujur untuk kenyamanan maksimalmu.</p>
+            </div>
+            <div class="collection-toolbar">
+                <div>
+                    <div class="results-label">
+                        <span class="live-dot"></span>
+                        <span id="resultCount">Memuat koleksi....</span>
+                    </div>
+                    <div class="filter">
+                        <label class="search-box">
+                            <span>⌕</span><input id="searchInput" type="search" placeholder="Cari merek atau model" aria-label="Cari mobil">
+                        </label>
+                        <select id="brandFilter" aria-label="Filter merek">
+                            <option value="">Semua merek</option>
+                        </select>
+                        <select id="sortSelect" aria-label="Urutan mobil">
+                            <option value="default">Urutan Default</option>
+                            <option value="name">Nama A–Z</option>
+                            <option value="priceAsc">Harga Terendah</option>
+                            <option value="priceDesc">Harga Tertinggi</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="apiNotice" class="api-notice" role="status" hidden></div>
+            <div id="carGrid" class="car-grid" aria-live="polite">
+                <div class="loading-card">
+                    <span class="loader"></span>
+                    <p>Menyiapkan Koleksi Untuk Mu..</p>
+                </div>
+            </div>
+            <div id="emptyState" class="empty-state" hidden>
+                <span>⌕</span>
+                <h3>Belum ada yang cocok</h3>
+                <p>Coba kata kunci lain / filter yang berbeda</p>
+                <button class="button-dark" id="resetFilters">Reset Filters</button>
+            </div>
+            <div class="collection-footer">
+                <span>DATA KOLEKSI DAPAT BERUBAH</span>
+                <a href="#layanan">Butuh Bantuan Memilih?</a>
+            </div>
+         </section>
+         <!-- Bagian 3 Tentang Kami informasi kami (MID) TENTANG KAMI -->
+          <section class="manifesto" id="tentang">
+            <div class="manifesto-mark">OD<span>.</span></div>
+            <div class="manifesto-copy">
+                <div class="eyebrow"><span></span>MORE THAN A DRIVE</div>
+                <h2>Bukan sekedar Mobil.<br><em>Bagian dari ceritamu.</em></h2>
+                <p>Kami percaya kendaraan yang tepat bukan cuma soal sampai tujuan. Ini tentang momen di perjalanan, kebebasan untuk menjelajah, dan cerita yang kamu bawa pulang.</p>
+                <a class="light-link" href="#koleksi">Mulai Eksplorasi</a>
+
+            </div>
+            <div class="manifesto-side">MOVE WITH<br>MEANING — 2026</div>
+          </section>
+          <section class="services section-wrap" id="layanan">
+            <div class="eyebrow">THE OtoDrive EXPERIENCE</div>
+            <div class="services-heading">
+                <h2>Semua dimulai dari<br><em>langkah sederhana</em></h2>
+                <p>Jelajahi dengan ritmemu sendiri. Kami ada disini</p>
+            </div>
+            <div class="service-grid">
+                <article>
+                    <span class="service-number">01 / EXPLORE</span><div class="service-icon">↗</div>
+                    <h3>Jelajah pilihan</h3>
+                    <p>Lihat koleksi mobil dan temukan opsi yang paling sesuai dengan kebutuhanmu.</p>
+                </article>
+                <article>
+                    <span class="service-number">02 / COMPARE</span><div class="service-icon">⌘</div>
+                    <h3>Bandingkan dengan mudah</h3>
+                    <p>Gunakan pencarian dan filter untuk menyaring pilihan secara praktis.</p>
+                </article>
+                <article>
+                    <span class="service-number">03 / CONNECT</span><div class="service-icon">✳</div>
+                    <h3>Mulai percakapan</h3>
+                    <p>Sudah menemukan kandidat? Hubungi tim kami untuk informasi selanjutnya.</p>
+                </article>
+            </div>
+          </section>
+          <section class="closing-cta">
+            <div>
+                <div class="eyebrow">READY WHEN YOU ARE</div>
+                <h2>Jalanmu. Ceritamu. Kenyamananmu.<br><em>Mobil pilihanmu.</em></h2>
+            </div>
+            <a class="button button-light" href="#koleksi">Jelajahi koleksi kami <span>↗</span></a>
+          </section>
+    </main>
+    <!-- Bagian Bawah / penutup (Footer) -->
+     <footer class="footer">
+        <a class="brand brand-footer" href="#">
+            <span class="brand-mark">OD</span>
+            <span>OtoDrive
+                <span class="brand-period">.</span>
+                <small>DRIVE YOUR NEXT</small>
+            </span>
+        </a>
+        <span>© 2026 OtoDrive. Kami hadir disini..</span>
+        <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Kembali ke atas ↑</a>
+     </footer>
+     <dialog id="carDialog" class="car-dialog">
+        <button class="dialog-close" id="dialogClose" aria-label="Tutup detail">×</button>
+        <div id="dialogContent"></div>
+     </dialog>
+</body>
+</html>
