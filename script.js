@@ -52,7 +52,7 @@ function normalizeCar(raw, index) {
     transmisi: String(firstValue(raw, ["transmisi","transmission","gearbox"]) || ""),
     jenis: String(firstValue(raw, ["jenis","kategori","category","body_type"]) || "Pilihan OtoDrive"),
     gambar: image ? String(image) : "",
-    deskripsi: String(firstValue(raw, ["deskripsi","description","keterangan","detail"]) || "Temukan detail kendaraan ini bersama tim AUTORA."),
+    deskripsi: String(firstValue(raw, ["deskripsi","description","keterangan","detail"]) || "Temukan detail kendaraan ini bersama tim OtoDrive."),
     raw
   };
 }
@@ -78,7 +78,7 @@ function escapeHTML(value) {
 function imageFallback(car) {
   const palettes = ["#dce3d5","#d7dedf","#e7ddd0","#d8dcd1"];
   const index = Math.abs(String(car.id).length + String(car.nama).length) % palettes.length;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="${palettes[index]}"/><g fill="#27352b" opacity=".88"><path d="M135 310l42-82c9-18 28-29 48-29h286c23 0 42 11 55 31l55 80 42 14v57H105v-55z"/><path d="M250 214h244l-42-62H299z" fill="#aebbb0"/><circle cx="230" cy="365" r="43" fill="#17201b"/><circle cx="230" cy="365" r="20" fill="#b8c2b5"/><circle cx="570" cy="365" r="43" fill="#17201b"/><circle cx="570" cy="365" r="20" fill="#b8c2b5"/></g><text x="400" y="90" font-family="Arial" font-size="24" fill="#27352b" text-anchor="middle" letter-spacing="8">AUTORA</text></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="${palettes[index]}"/><g fill="#27352b" opacity=".88"><path d="M135 310l42-82c9-18 28-29 48-29h286c23 0 42 11 55 31l55 80 42 14v57H105v-55z"/><path d="M250 214h244l-42-62H299z" fill="#aebbb0"/><circle cx="230" cy="365" r="43" fill="#17201b"/><circle cx="230" cy="365" r="20" fill="#b8c2b5"/><circle cx="570" cy="365" r="43" fill="#17201b"/><circle cx="570" cy="365" r="20" fill="#b8c2b5"/></g><text x="400" y="90" font-family="Arial" font-size="24" fill="#27352b" text-anchor="middle" letter-spacing="8">OtoDrive</text></svg>`;
   return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
 }
 function getCarImage(car) {
@@ -112,14 +112,14 @@ function renderCars() {
   grid.hidden = filtered.length === 0;
   grid.innerHTML = filtered.map((car, index) => `
     <article class="car-card" tabindex="0" role="button" aria-label="Lihat detail ${escapeHTML(car.nama)}" data-car-id="${escapeHTML(car.id)}">
-      <div class="car-photo"><img src="${escapeHTML(getCarImage(car))}" alt="${escapeHTML(car.nama)}" loading="lazy" onerror="this.onerror=null;this.src='${imageFallback(car)}'"><span class="car-badge">${escapeHTML(car.jenis || "PILIHAN AUTORA")}</span><span class="car-arrow">↗</span></div>
-      <div class="car-info"><div class="car-meta"><span>${escapeHTML(car.merek || "AUTORA")}</span><span>${escapeHTML(car.tahun || "FEATURED")}</span></div><h3>${escapeHTML(car.nama)}</h3><p class="car-description">${escapeHTML(car.transmisi || car.deskripsi)}</p><div class="car-card-bottom"><div><div class="price-label">HARGA / ESTIMASI</div><div class="car-price">${escapeHTML(formatPrice(car.harga))}</div></div><span class="detail-link">Detail <span>↗</span></span></div></div>
+      <div class="car-photo"><img src="${escapeHTML(getCarImage(car))}" alt="${escapeHTML(car.nama)}" loading="lazy" onerror="this.onerror=null;this.src='${imageFallback(car)}'"><span class="car-badge">${escapeHTML(car.jenis || "PILIHAN OtoDrive")}</span><span class="car-arrow">↗</span></div>
+      <div class="car-info"><div class="car-meta"><span>${escapeHTML(car.merek || "OtoDrive")}</span><span>${escapeHTML(car.tahun || "FEATURED")}</span></div><h3>${escapeHTML(car.nama)}</h3><p class="car-description">${escapeHTML(car.transmisi || car.deskripsi)}</p><div class="car-card-bottom"><div><div class="price-label">HARGA / ESTIMASI</div><div class="car-price">${escapeHTML(formatPrice(car.harga))}</div></div><span class="detail-link">Detail <span>↗</span></span></div></div>
     </article>`).join("");
 }
 function showCarDetail(id) {
   const car = cars.find(item => String(item.id) === String(id));
   if (!car) return;
-  dialogContent.innerHTML = `<img class="dialog-photo" src="${escapeHTML(getCarImage(car))}" alt="${escapeHTML(car.nama)}" onerror="this.onerror=null;this.src='${imageFallback(car)}'"><div class="dialog-body"><div class="eyebrow"><span></span> ${escapeHTML(car.merek || "AUTORA")} · ${escapeHTML(car.tahun || "KOLEKSI")}</div><h2>${escapeHTML(car.nama)}</h2><p>${escapeHTML(car.deskripsi)}</p><div class="dialog-price">${escapeHTML(formatPrice(car.harga))}</div><div class="dialog-specs">${car.jenis ? `<span>Jenis: ${escapeHTML(car.jenis)}</span>` : ""}${car.tahun ? `<span>Tahun: ${escapeHTML(car.tahun)}</span>` : ""}${car.transmisi ? `<span>Transmisi: ${escapeHTML(car.transmisi)}</span>` : ""}</div><div class="dialog-contact"><a href="mailto:hello@autora.example?subject=${encodeURIComponent("Informasi " + car.nama)}">Tanyakan mobil ini ↗</a></div></div>`;
+  dialogContent.innerHTML = `<img class="dialog-photo" src="${escapeHTML(getCarImage(car))}" alt="${escapeHTML(car.nama)}" onerror="this.onerror=null;this.src='${imageFallback(car)}'"><div class="dialog-body"><div class="eyebrow"><span></span> ${escapeHTML(car.merek || "OtoDrive")} · ${escapeHTML(car.tahun || "KOLEKSI")}</div><h2>${escapeHTML(car.nama)}</h2><p>${escapeHTML(car.deskripsi)}</p><div class="dialog-price">${escapeHTML(formatPrice(car.harga))}</div><div class="dialog-specs">${car.jenis ? `<span>Jenis: ${escapeHTML(car.jenis)}</span>` : ""}${car.tahun ? `<span>Tahun: ${escapeHTML(car.tahun)}</span>` : ""}${car.transmisi ? `<span>Transmisi: ${escapeHTML(car.transmisi)}</span>` : ""}</div><div class="dialog-contact"><a href="mailto:hello@otodrive.example?subject=${encodeURIComponent("Informasi " + car.nama)}">Tanyakan mobil ini ↗</a></div></div>`;
   carDialog.showModal();
 }
 async function loadCars() {
