@@ -50,7 +50,7 @@ function normalizeCar(raw, index) {
     tahun: firstValue(raw, ["tahun","year","tahun_produksi"]) || "",
     harga: Number.isFinite(numericPrice) ? numericPrice : 0,
     transmisi: String(firstValue(raw, ["transmisi","transmission","gearbox"]) || ""),
-    jenis: String(firstValue(raw, ["jenis","kategori","category","body_type"]) || "Pilihan AUTORA"),
+    jenis: String(firstValue(raw, ["jenis","kategori","category","body_type"]) || "Pilihan OtoDrive"),
     gambar: image ? String(image) : "",
     deskripsi: String(firstValue(raw, ["deskripsi","description","keterangan","detail"]) || "Temukan detail kendaraan ini bersama tim AUTORA."),
     raw
